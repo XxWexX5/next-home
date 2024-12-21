@@ -1,8 +1,8 @@
 export const ButtonOutline = ({ ...props }) => {
   return (
     <button
-      className="uppercase border-2 border-primary-300 text-primary-300 text-lg font-medium py-2 rounded-full w-36 transition-all hover:bg-primary-300 hover:text-neutral-full"
       {...props}
+      className={`w-full uppercase border-2 border-primary-300 text-primary-300 text-lg font-medium py-2 rounded-full transition-all hover:bg-primary-300 hover:text-neutral-full ${props.className}`}
     ></button>
   );
 };

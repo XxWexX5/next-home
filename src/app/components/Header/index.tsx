@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { Logo } from "../Logo";
 import { Search } from "../Search";
 import { Button } from "../Button";
@@ -17,7 +15,9 @@ export const Header = () => {
         <div className="w-full flex flex-col gap-4 items-center md:flex-row md:w-auto md:items-start">
           <Search />
 
-          <Button.Primary>Search</Button.Primary>
+          <div className="w-36">
+            <Button.Primary>Search</Button.Primary>
+          </div>
         </div>
 
         <Menu />

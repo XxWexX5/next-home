@@ -3,7 +3,7 @@ export const Container = ({
   ...props
 }: Readonly<{
   children: React.ReactNode;
-  className: string;
+  className?: string;
 }>) => {
   return (
     <div className={`w-full container mx-auto px-4 ${props.className}`}>
