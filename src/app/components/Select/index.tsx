@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
 export const Select = () => {
-  const [selectedOption, setSelectedOption] = useState(""); // Estado para gerenciar o valor selecionado
+  const [selectedOption, setSelectedOption] = useState("");
 
   const options = [
     { value: "sp", label: "São Paulo - SP" },
