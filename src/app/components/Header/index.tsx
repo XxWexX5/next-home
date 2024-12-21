@@ -4,6 +4,7 @@ import { Logo } from "../Logo";
 import { Search } from "../Search";
 import { Button } from "../Button";
 import { Container } from "../Container";
+import { Menu } from "../Menu";
 
 export const Header = () => {
   return (
@@ -19,15 +20,7 @@ export const Header = () => {
           <Button.Primary>Search</Button.Primary>
         </div>
 
-        <div className="size-6 hidden md:block">
-          <Image
-            src="/images/menu.svg"
-            width={21}
-            height={21}
-            layout="responsive"
-            alt="Menu"
-          />
-        </div>
+        <Menu />
       </Container>
     </div>
   );
