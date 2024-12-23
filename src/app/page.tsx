@@ -10,10 +10,10 @@ export default function Home() {
 
       <div className="flex h-[calc(100%-6rem)]">
         <div className="border-b border-gray-200 w-full">
-          <div className="flex items-center justify-between px-8 py-10">
+          <div className="flex flex-col gap-4 items-center justify-between px-8 py-10 lg:flex-row lg:gap-0">
             <Result />
 
-            <div className="flex gap-3 w-full max-w-sm">
+            <div className="flex gap-3 w-full max-w-[18rem] lg:max-w-sm">
               <ButtonPrimary>Sort</ButtonPrimary>
               <ButtonPrimary>Filter</ButtonPrimary>
             </div>
