@@ -18,3 +18,8 @@ body {
   color: var(--foreground);
   background: var(--background);
 }
+
+html,
+body {
+  height: 100%;
+}
