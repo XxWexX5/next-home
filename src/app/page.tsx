@@ -6,6 +6,7 @@ import { CircleIndicator } from "./components/CircleIndicator";
 import { Card } from "./components/Card";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { WhatsAppButton } from "./components/Whatsapp";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
           <div className="flex flex-col gap-4 items-center justify-between px-8 py-10 border-b border-gray-200 lg:flex-row lg:gap-0">
             <Result />
 
-            <div className="flex gap-3 w-full max-w-[18rem] lg:max-w-sm">
+            <div className="flex gap-3 w-full max-w-[18rem] lg:max-w-[16rem]">
               <ButtonPrimary>Sort</ButtonPrimary>
               <ButtonPrimary>Filter</ButtonPrimary>
             </div>
@@ -77,6 +78,8 @@ export default function Home() {
           <GoogleMap />
         </div>
       </div>
+
+      <WhatsAppButton phoneNumber={5511999999999} />
     </>
   );
 }
