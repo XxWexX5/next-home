@@ -12,8 +12,8 @@ export default function Home() {
     <>
       <Header />
 
-      <div className="flex h-[calc(100%-6rem)]">
-        <div className="w-full flex-1 overflow-auto pb-12">
+      <div className="flex md:h-[calc(100%-6rem)]">
+        <div className="w-full h-full flex-1 pb-12 overflow-hidden md:overflow-auto">
           <div className="flex flex-col gap-4 items-center justify-between px-8 py-10 border-b border-gray-200 lg:flex-row lg:gap-0">
             <Result />
 
@@ -38,7 +38,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex flex-wrap gap-6 gap-y-10 px-8 justify-between items-center">
+          <div className="flex flex-wrap gap-6 gap-y-10 px-8 justify-center items-center md:justify-start">
             <Card
               image={{ src: "/images/house.jpg", alt: "House", className: "" }}
               title="House for rent in Maringá, Jardim Iguaçu, with 3 bedrooms, with 131.52 m²"
@@ -73,7 +73,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full h-full flex-1 max-w-3xl">
+        <div className="w-full h-full flex-1 max-w-3xl hidden md:block">
           <GoogleMap />
         </div>
       </div>

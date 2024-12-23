@@ -31,7 +31,7 @@ export const Card = ({
   }
 
   return (
-    <div className="w-full max-w-[21rem] rounded-2xl shadow-md overflow-hidden">
+    <div className="w-full max-w-[21rem] mx-auto rounded-2xl shadow-md overflow-hidden xl:mx-0">
       <header className="w-full">
         <div className="w-full">
           <Image
