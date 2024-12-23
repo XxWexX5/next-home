@@ -1,3 +1,6 @@
+import { Header } from "@/app/components/Header";
+import { Carrousel } from "@/app/components/ImageCarousel";
+
 interface BuildingPageProps {
   params: {
     id: string;
@@ -7,5 +10,15 @@ interface BuildingPageProps {
 export default function Building({ params }: BuildingPageProps) {
   const { id } = params;
 
-  return <h2>Page {id}</h2>;
+  console.log(id);
+
+  return (
+    <>
+      <Header />
+
+      <div className="w-full h-[25rem] overflow-hidden">
+        <Carrousel />
+      </div>
+    </>
+  );
 }
