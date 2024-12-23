@@ -16,7 +16,7 @@ export default function Building({ params }: BuildingPageProps) {
     <>
       <Header />
 
-      <div className="w-full h-[25rem] overflow-hidden">
+      <div className="w-full h-[25rem] overflow-hidden relative">
         <Carrousel />
       </div>
     </>

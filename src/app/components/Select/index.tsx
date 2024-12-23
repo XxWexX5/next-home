@@ -24,7 +24,7 @@ export const Select = () => {
       <select
         value={selectedOption}
         onChange={(e) => setSelectedOption(e.target.value)}
-        className="w-full h-full text-primary-300 text-base font-medium py-2 px-4 pr-8 rounded-lg appearance-none cursor-pointer"
+        className="w-full h-full text-primary-300 text-base font-medium py-2 px-4 pr-8 rounded-lg appearance-none cursor-pointer bg-transparent"
       >
         <option value="" disabled>
           Select a place

@@ -41,6 +41,7 @@ export default function Home() {
 
           <div className="flex flex-wrap gap-6 gap-y-10 px-8 justify-center items-center md:justify-start">
             <Card
+              href="/building/123"
               image={{ src: "/images/house.jpg", alt: "House", className: "" }}
               title="House for rent in Maringá, Jardim Iguaçu, with 3 bedrooms, with 131.52 m²"
               description="May 10th Street"
@@ -49,6 +50,7 @@ export default function Home() {
             />
 
             <Card
+              href="/building/456"
               image={{ src: "/images/house.jpg", alt: "House", className: "" }}
               title="House for rent in Maringá, Jardim Iguaçu, with 3 bedrooms, with 131.52 m²"
               description="May 10th Street"
@@ -57,6 +59,7 @@ export default function Home() {
             />
 
             <Card
+              href="/building/789"
               image={{ src: "/images/house.jpg", alt: "House", className: "" }}
               title="House for rent in Maringá, Jardim Iguaçu, with 3 bedrooms, with 131.52 m²"
               description="May 10th Street"
@@ -65,6 +68,7 @@ export default function Home() {
             />
 
             <Card
+              href="/building/321"
               image={{ src: "/images/house.jpg", alt: "House", className: "" }}
               title="House for rent in Maringá, Jardim Iguaçu, with 3 bedrooms, with 131.52 m²"
               description="May 10th Street"

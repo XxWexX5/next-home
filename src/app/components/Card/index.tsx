@@ -1,8 +1,10 @@
 import Image from "next/image";
 
 import { Favorite } from "../Favorite";
+import Link from "next/link";
 
 interface CardProps {
+  href: string;
   image: {
     src: string;
     alt: string;
@@ -15,6 +17,7 @@ interface CardProps {
 }
 
 export const Card = ({
+  href,
   image,
   title,
   description,
@@ -31,7 +34,10 @@ export const Card = ({
   }
 
   return (
-    <div className="w-full max-w-[21rem] mx-auto rounded-2xl shadow-md overflow-hidden xl:mx-0">
+    <Link
+      href={href}
+      className="w-full max-w-[21rem] mx-auto rounded-2xl shadow-md overflow-hidden transition-opacity hover:opacity-60 xl:mx-0"
+    >
       <header className="w-full">
         <div className="w-full">
           <Image
@@ -61,6 +67,6 @@ export const Card = ({
 
         <Favorite isFavorited={favorited} />
       </footer>
-    </div>
+    </Link>
   );
 };
