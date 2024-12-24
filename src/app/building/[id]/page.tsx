@@ -2,10 +2,15 @@ import { Button } from "@/app/components/Button";
 import { Container } from "@/app/components/Container";
 import { Header } from "@/app/components/Header";
 import { Carrousel } from "@/app/components/ImageCarousel";
+
+import { BiSquareRounded } from "react-icons/bi";
 import { BsPersonWalking } from "react-icons/bs";
 import { IoMdPhotos } from "react-icons/io";
-
 import { PiMapPinAreaFill } from "react-icons/pi";
+import { FaBath, FaBed, FaCar } from "react-icons/fa";
+
+import { ItemDescription } from "./components/ItemDescription";
+import { Check } from "./components/ItemCheck";
 
 interface BuildingPageProps {
   params: {
@@ -66,6 +71,65 @@ export default function Building({ params }: BuildingPageProps) {
             <BsPersonWalking size={24} />
             Street
           </Button.Outline>
+        </div>
+
+        <div className="space-y-10 lg:space-y-20">
+          <div className="space-y-4">
+            <h2 className="text-neutral-200 font-bold text-lg">Highlights</h2>
+
+            <div className="flex justify-between gap-1 lg:justify-start">
+              <ItemDescription
+                title="Total"
+                description="42.22 ft²"
+                image={<BiSquareRounded className="fill-neutral-200" />}
+              />
+
+              <ItemDescription
+                title="Bed"
+                description="2"
+                image={<FaBed className="fill-neutral-200" />}
+              />
+
+              <ItemDescription
+                title="Bath"
+                description="1"
+                image={<FaBath className="fill-neutral-200" />}
+              />
+
+              <ItemDescription
+                title="Parking"
+                description="1"
+                image={<FaCar className="fill-neutral-200" />}
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2 lg:space-y-2">
+            <h2 className="text-neutral-200 font-bold text-lg">
+              About the Property
+            </h2>
+
+            <p className="text-neutral-200">Schedule a visit with us!</p>
+          </div>
+
+          <div className="space-y-4">
+            <h2 className="text-neutral-200 font-bold text-lg">
+              Property features
+            </h2>
+
+            <div className="flex flex-col gap-4 lg:flex-row lg:gap-32">
+              <div className="flex flex-col justify-between gap-4 lg:justify-start">
+                <Check.Checked title="Accepts pets" />
+                <Check.Checked title="Kitchen" />
+                <Check.Checked title="Air conditioning" />
+              </div>
+
+              <div className="flex flex-col justify-between gap-4 lg:justify-start">
+                <Check.Checked title="Service area" />
+                <Check.Checked title="Electronic gate" />
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </>
