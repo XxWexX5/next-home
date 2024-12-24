@@ -34,17 +34,13 @@ export default function Building({ params }: BuildingPageProps) {
     <>
       <Header />
 
-      <div className="w-full h-[25rem] overflow-hidden relative">
+      <div className="w-full overflow-hidden relative">
         <Carrousel />
       </div>
 
       <Container>
-        <div className="flex max-w-xl gap-4 py-20">
-          <Button.Primary
-            isLink={true}
-            href="/"
-            className="flex items-center justify-center gap-2"
-          >
+        <div className="flex flex-col max-w-xl gap-4 py-10 lg:flex-row lg:py-20">
+          <Button.Primary className="flex items-center justify-center gap-2 pointer-events-none">
             <IoMdPhotos size={24} />
             Photos
           </Button.Primary>
