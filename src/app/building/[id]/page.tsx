@@ -2,6 +2,7 @@ import { Button } from "@/app/components/Button";
 import { Container } from "@/app/components/Container";
 import { Header } from "@/app/components/Header";
 import { Carrousel } from "@/app/components/ImageCarousel";
+import { Footer } from "@/app/components/Footer";
 
 import { BiSquareRounded } from "react-icons/bi";
 import { BsPersonWalking } from "react-icons/bs";
@@ -73,7 +74,7 @@ export default function Building({ params }: BuildingPageProps) {
           </Button.Outline>
         </div>
 
-        <div className="space-y-10 lg:space-y-20">
+        <div className="space-y-10 lg:space-y-20 pb-14 lg:pb-24">
           <div className="space-y-4">
             <h2 className="text-neutral-200 font-bold text-lg">Highlights</h2>
 
@@ -132,6 +133,8 @@ export default function Building({ params }: BuildingPageProps) {
           </div>
         </div>
       </Container>
+
+      <Footer />
     </>
   );
 }
