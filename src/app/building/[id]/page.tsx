@@ -12,6 +12,7 @@ import { FaBath, FaBed, FaCar } from "react-icons/fa";
 
 import { ItemDescription } from "./components/ItemDescription";
 import { Check } from "./components/ItemCheck";
+import { CardDescription } from "@/app/components/CardDescription";
 
 interface BuildingPageProps {
   params: {
@@ -45,33 +46,37 @@ export default function Building({ params }: BuildingPageProps) {
       </div>
 
       <Container>
-        <div className="flex flex-col max-w-xl gap-4 py-10 lg:flex-row lg:py-20">
-          <Button.Primary className="flex items-center justify-center gap-2 pointer-events-none">
-            <IoMdPhotos size={24} />
-            Photos
-          </Button.Primary>
+        <div className="flex-col w-full justify-between items-start relative lg:flex-row">
+          <div className="flex flex-col max-w-xl gap-4 py-10 flex-1 m-auto lg:mb-0 lg:m-0 lg:flex-row lg:py-20">
+            <Button.Primary className="flex items-center justify-center gap-2 pointer-events-none">
+              <IoMdPhotos size={24} />
+              Photos
+            </Button.Primary>
 
-          <Button.Outline
-            isLink={true}
-            href={googleMapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2"
-          >
-            <PiMapPinAreaFill size={24} />
-            Map
-          </Button.Outline>
+            <Button.Outline
+              isLink={true}
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2"
+            >
+              <PiMapPinAreaFill size={24} />
+              Map
+            </Button.Outline>
 
-          <Button.Outline
-            isLink={true}
-            href={streetViewUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2"
-          >
-            <BsPersonWalking size={24} />
-            Street
-          </Button.Outline>
+            <Button.Outline
+              isLink={true}
+              href={streetViewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2"
+            >
+              <BsPersonWalking size={24} />
+              Street
+            </Button.Outline>
+          </div>
+
+          <CardDescription />
         </div>
 
         <div className="space-y-10 lg:space-y-20 pb-14 lg:pb-24">
