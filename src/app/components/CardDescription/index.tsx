@@ -76,13 +76,13 @@ export const CardDescription = () => {
 
           <Dialog.Portal>
             <Dialog.Overlay className="fixed inset-0 bg-black/60 z-10" />
-            <Dialog.Content className="fixed left-1/2 top-1/2 max-h-[85vh] w-[90vw] max-w-[48rem] px-[4rem] py-[2rem] -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow z-20">
+            <Dialog.Content className="fixed left-1/2 top-1/2 max-h-[85vh] w-[90vw] max-w-[48rem] lg:px-[4rem] py-[2rem] -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white px-[1.5rem] lg:p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none data-[state=open]:animate-contentShow z-20">
               <Dialog.Title className="text-neutral-300 m-0 text-2xl font-medium text-center mb-6">
                 I want to know more
               </Dialog.Title>
 
               <div className="space-y-4">
-                <div className="flex gap-4">
+                <div className="flex flex-col gap-4 lg:flex-row">
                   <div className="flex flex-1 flex-col gap-2 text-neutral-200">
                     <label className="text-neutral-200 text-lg px-7">
                       Pretension
@@ -108,7 +108,7 @@ export const CardDescription = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex flex-col gap-4 lg:flex-row">
                   <div className="flex flex-1 flex-col gap-2 text-neutral-200">
                     <label className="text-neutral-200 text-lg px-7">
                       Phone
