@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import { FaChevronDown } from "react-icons/fa";
 
 import { twMerge } from "tailwind-merge";
@@ -16,6 +14,8 @@ interface SelectProps {
   optionDisabled: string;
   className?: string;
   id?: string;
+  onChange?: () => void;
+  value?: string;
 }
 
 export const Select = ({
@@ -23,15 +23,15 @@ export const Select = ({
   optionDisabled,
   className,
   id,
+  onChange,
+  value,
   ...props
 }: SelectProps) => {
-  const [selectedOption, setSelectedOption] = useState("");
-
   return (
     <div className="relative w-full">
       <select
-        value={selectedOption}
-        onChange={(e) => setSelectedOption(e.target.value)}
+        value={value}
+        onChange={onChange}
         id={id}
         className={twMerge(
           `w-full h-full text-primary-300 text-base font-medium py-2 px-4 pr-8 rounded-lg appearance-none cursor-pointer bg-transparent ${className}`

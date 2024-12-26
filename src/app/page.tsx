@@ -21,7 +21,7 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 export default function Home() {
-  const { buildings } = useBuildings();
+  const { buildings, setBuildings } = useBuildings();
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -403,7 +403,7 @@ export default function Home() {
                         </h5>
 
                         <div className="flex w-full gap-6">
-                          <div className="flex-1 border border-neutral-600 inline-flex items-baseline gap-2 rounded-full px-3 py-[.38rem]">
+                          <div className="flex-1 border border-neutral-600 inline-flex items-baseline gap-2 rounded-full px-3 py-[.55rem]">
                             <label
                               className="text-sm text-neutral-500"
                               htmlFor="value-from"
@@ -425,7 +425,7 @@ export default function Home() {
                             />
                           </div>
 
-                          <div className="flex-1 border border-neutral-600 inline-flex items-baseline gap-2 rounded-full px-3 py-[.38rem]">
+                          <div className="flex-1 border border-neutral-600 inline-flex items-baseline gap-2 rounded-full px-3 py-[.55rem]">
                             <label
                               className="text-sm text-neutral-500"
                               htmlFor="value-until"

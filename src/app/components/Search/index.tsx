@@ -1,9 +1,42 @@
 import { Select } from "../Select";
 import { Input } from "../Input";
 
+import { useBuildings } from "@/app/context/BuildingsContext";
+import { Button } from "../Button";
+import { useEffect, useState } from "react";
+
+import { data } from "@/app/data/buildings";
+
 export const Search = () => {
+  const { setBuildings } = useBuildings();
+  const [search, setSearch] = useState("");
+  const [place, setPlace] = useState("");
+
+  useEffect(() => {
+    if (place) {
+      const buildingsFiltered = data.filter((building) =>
+        building.Location.toLocaleLowerCase().includes(
+          place.toLocaleLowerCase()
+        )
+      );
+
+      return setBuildings(buildingsFiltered);
+    }
+
+    return setBuildings(data);
+  }, [place]);
+
+  function handleSearch() {
+    const buildingsFiltered = data.filter((building) =>
+      building.Location.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+    );
+
+    return setBuildings(buildingsFiltered);
+  }
+
   const options = [
-    { value: "sp", label: "São Paulo - SP" },
+    { value: "", label: "All" },
+    { value: "sao paulo", label: "Sao Paulo" },
     { value: "paris", label: "Paris" },
     { value: "barcelona", label: "Barcelona" },
     { value: "cartagena", label: "Cartagena" },
@@ -15,16 +48,28 @@ export const Search = () => {
   ];
 
   return (
-    <div className="w-full inline-flex items-center border border-neutral-700 bg-neutral-full px-4 pr-8 rounded-full h-12">
-      <Select options={options} optionDisabled="Select a place" />
+    <div className="flex gap-3">
+      <div className="w-full inline-flex items-center border border-neutral-700 bg-neutral-full px-4 pr-8 rounded-full h-12">
+        <Select
+          options={options}
+          optionDisabled="Select a place"
+          value={place}
+          onChange={(e) => setPlace(e.target.value)}
+        />
 
-      <div className="h-[86%] w-px bg-neutral-700 ml-3 mr-5"></div>
+        <div className="h-[86%] w-px bg-neutral-700 ml-3 mr-5"></div>
 
-      <Input.Text
-        type="text"
-        placeholder="Where do you want to live?"
-        className=""
-      />
+        <Input.Text
+          type="text"
+          placeholder="Where do you want to live?"
+          className=""
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
+      <div className="w-36">
+        <Button.Primary onClick={handleSearch}>Search</Button.Primary>
+      </div>
     </div>
   );
 };

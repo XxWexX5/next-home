@@ -14,10 +14,6 @@ export const Header = () => {
 
         <div className="w-full flex flex-col gap-4 items-center lg:flex-row lg:w-auto lg:items-start">
           <Search />
-
-          <div className="w-36">
-            <Button.Primary>Search</Button.Primary>
-          </div>
         </div>
 
         <Menu />
