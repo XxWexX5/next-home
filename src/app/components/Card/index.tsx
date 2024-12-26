@@ -28,10 +28,10 @@ export const Card = ({
   return (
     <Link
       href={href}
-      className="w-full max-w-[21rem] mx-auto rounded-2xl shadow-md overflow-hidden transition-opacity hover:opacity-60 xl:mx-0"
+      className="w-full max-w-[21rem] mx-auto rounded-2xl shadow-md overflow-hidden transition-opacity lg:hover:opacity-60 xl:mx-0"
     >
       <header className="w-full">
-        <div className="w-full">
+        <div className="w-full h-[21rem]">
           <Image
             src={image.src}
             alt={image.src}
@@ -44,7 +44,7 @@ export const Card = ({
       </header>
 
       <section className="p-6 space-y-6">
-        <p className="text-neutral-400" title={title}>
+        <p className="text-neutral-400 truncate" title={title}>
           {title}
         </p>
 

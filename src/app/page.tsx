@@ -11,9 +11,18 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { WhatsAppButton } from "./components/Whatsapp";
 
 import { useBuildings } from "./context/BuildingsContext";
+import { useState } from "react";
 
 export default function Home() {
   const { buildings } = useBuildings();
+  const itemsPerPage = 5;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(buildings.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentItems = buildings.slice(startIndex, startIndex + itemsPerPage);
+
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
     <>
@@ -31,33 +40,60 @@ export default function Home() {
           </div>
 
           <div className="flex items-center justify-center gap-6 py-10 px-4 md:gap-16">
-            <IoIosArrowBack size={24} className="text-neutral-700" />
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className="disabled:opacity-20"
+            >
+              <IoIosArrowBack
+                size={24}
+                className="text-neutral-300 cursor-pointer transition-opacity hover:opacity-60"
+              />
+            </button>
 
-            <CircleIndicator.Primary>1</CircleIndicator.Primary>
+            {pageNumbers.map((number) => {
+              if (number === currentPage) {
+                return (
+                  <button key={number} onClick={() => setCurrentPage(number)}>
+                    <CircleIndicator.Primary>{number}</CircleIndicator.Primary>
+                  </button>
+                );
+              }
 
-            <CircleIndicator.Outline>2</CircleIndicator.Outline>
+              return (
+                <button key={number} onClick={() => setCurrentPage(number)}>
+                  <CircleIndicator.Outline>{number}</CircleIndicator.Outline>
+                </button>
+              );
+            })}
 
-            <CircleIndicator.Outline>3</CircleIndicator.Outline>
-
-            <IoIosArrowForward
-              size={24}
-              className="text-neutral-300 cursor-pointer transition-opacity hover:opacity-60"
-            />
+            <button
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+              className="disabled:opacity-20"
+            >
+              <IoIosArrowForward
+                size={24}
+                className="text-neutral-300 cursor-pointer transition-opacity hover:opacity-60"
+              />
+            </button>
           </div>
 
           <div className="flex flex-wrap gap-6 gap-y-10 px-8 justify-center items-center md:justify-start">
-            {buildings.map((building) => (
+            {currentItems.map((item) => (
               <Card
-                key={building.Id}
-                href={`/building/${building.Id}`}
+                key={item.Id}
+                href={`/building/${item.Id}`}
                 image={{
-                  src: building.PictureURL,
+                  src: item.PictureURL,
                   alt: "Image",
                   className: "",
                 }}
-                title={building.Title}
-                description={building.Description}
-                price={building.Sale_Price}
+                title={item.Title}
+                description={item.Description}
+                price={item.Sale_Price}
                 favorited={false}
               />
             ))}
