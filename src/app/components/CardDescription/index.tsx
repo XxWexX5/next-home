@@ -9,18 +9,16 @@ import { FaCalendarAlt } from "react-icons/fa";
 import * as Dialog from "@radix-ui/react-dialog";
 
 import { MdClose } from "react-icons/md";
-import { Select } from "../Select";
 
 import { useBuildings } from "@/app/context/BuildingsContext";
 import { formatCurrency } from "@/app/utils/formatCurrency";
+import { Form } from "../Form";
+import { useState } from "react";
 
 export const CardDescription = () => {
   const { building } = useBuildings();
 
-  const options = [
-    { value: "location", label: "Location" },
-    { value: "buy", label: "Buy" },
-  ];
+  const [isOpenDialog, setIsOpenDialog] = useState(false);
 
   return (
     <div className="top-0 right-0 w-full bg-neutral-full max-w-[28rem] m-auto min-h-[28rem] z-10 py-8 px-6 rounded-lg shadow-md mb-12 lg:absolute lg:mb-0 lg:-mt-[3rem]">
@@ -73,9 +71,12 @@ export const CardDescription = () => {
           <p className="lowercase">I want to know more</p>
         </Button.Primary>
 
-        <Dialog.Root>
+        <Dialog.Root open={isOpenDialog}>
           <Dialog.Trigger asChild>
-            <Button.Outline className="flex items-center justify-center gap-2 relative">
+            <Button.Outline
+              className="flex items-center justify-center gap-2 relative"
+              onClick={() => setIsOpenDialog(true)}
+            >
               <FaCalendarAlt size={21} className="absolute left-[1.35rem]" />
               <p className="lowercase">I want to schedule a visit</p>
             </Button.Outline>
@@ -89,77 +90,14 @@ export const CardDescription = () => {
               </Dialog.Title>
 
               <div className="space-y-4">
-                <div className="flex flex-col gap-4 lg:flex-row">
-                  <div className="flex flex-1 flex-col gap-2 text-neutral-200">
-                    <label className="text-neutral-200 text-lg px-7">
-                      Pretension
-                    </label>
-
-                    <div className="border border-neutral-600 inline-flex rounded-full px-3 py-1">
-                      <Select
-                        options={options}
-                        optionDisabled="Select a type"
-                        className="text-neutral-600 font-normal"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-1 flex-col gap-2 text-neutral-200">
-                    <label className="text-neutral-200 text-lg px-7">
-                      Name
-                    </label>
-
-                    <div className="border border-neutral-600 inline-flex rounded-full px-3 py-[.38rem]">
-                      <input className="w-full h-full text-neutral-200 text-bas py-2 px-4 pr-8 rounded-lg bg-transparent" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-4 lg:flex-row">
-                  <div className="flex flex-1 flex-col gap-2 text-neutral-200">
-                    <label className="text-neutral-200 text-lg px-7">
-                      Phone
-                    </label>
-
-                    <div className="border border-neutral-600 inline-flex rounded-full px-3 py-[.38rem]">
-                      <input className="w-full h-full text-neutral-200 text-bas py-2 px-4 pr-8 rounded-lg bg-transparent" />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-1 flex-col gap-2 text-neutral-200">
-                    <label className="text-neutral-200 text-lg px-7">
-                      Mail
-                    </label>
-
-                    <div className="border border-neutral-600 inline-flex rounded-full px-3 py-[.38rem]">
-                      <input className="w-full h-full text-neutral-200 text-bas py-2 px-4 pr-8 rounded-lg bg-transparent" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex flex-1 flex-col gap-2 text-neutral-200">
-                    <label className="text-neutral-200 text-lg px-7">
-                      Message
-                    </label>
-
-                    <div className="border border-neutral-600 inline-flex rounded-2xl px-3 py-[.38rem] h-[8rem]">
-                      <textarea className="w-full h-full text-neutral-200 text-bas py-2 px-4 pr-8 rounded-lg bg-transparent resize-none" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex flex-1 flex-col gap-2 text-neutral-200 mt-3">
-                    <Button.Primary>Send</Button.Primary>
-                  </div>
-                </div>
+                <Form handleDialog={setIsOpenDialog} />
               </div>
 
               <Dialog.Close asChild>
                 <button
                   className="absolute right-4 top-4 inline-flex size-[32px] appearance-none items-center justify-center rounded-full border border-primary-400 hover:bg-violet4 focus:shadow-[0_0_0_2px] focus:shadow-violet7 focus:outline-none"
                   aria-label="Close"
+                  onClick={() => setIsOpenDialog(false)}
                 >
                   <MdClose size={32} className="text-primary-400" />
                 </button>

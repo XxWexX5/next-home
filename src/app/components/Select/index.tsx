@@ -15,9 +15,16 @@ interface SelectProps {
   options: OptionType[];
   optionDisabled: string;
   className?: string;
+  id?: string;
 }
 
-export const Select = ({ options, optionDisabled, className }: SelectProps) => {
+export const Select = ({
+  options,
+  optionDisabled,
+  className,
+  id,
+  ...props
+}: SelectProps) => {
   const [selectedOption, setSelectedOption] = useState("");
 
   return (
@@ -25,9 +32,11 @@ export const Select = ({ options, optionDisabled, className }: SelectProps) => {
       <select
         value={selectedOption}
         onChange={(e) => setSelectedOption(e.target.value)}
+        id={id}
         className={twMerge(
           `w-full h-full text-primary-300 text-base font-medium py-2 px-4 pr-8 rounded-lg appearance-none cursor-pointer bg-transparent ${className}`
         )}
+        {...props}
       >
         <option value="" disabled>
           {optionDisabled}

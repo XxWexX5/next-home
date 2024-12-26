@@ -1,8 +1,12 @@
 "use client";
 
 import { Roboto } from "next/font/google";
-import "./globals.css";
 import { BuildingsProvider } from "./context/BuildingsContext";
+
+import { ToastContainer } from "react-toastify";
+
+import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const roboto = Roboto({
   weight: ["400", "500", "700"],
@@ -17,8 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.className} antialiased`}>
-        {" "}
-        <BuildingsProvider>{children} </BuildingsProvider>
+        <ToastContainer />
+
+        <BuildingsProvider>{children}</BuildingsProvider>
       </body>
     </html>
   );

@@ -8,6 +8,7 @@ interface ButtonPrimaryProps {
   className?: string;
   target?: string;
   rel?: string;
+  type?: string;
   children: ReactNode;
 }
 
@@ -18,6 +19,7 @@ export const ButtonPrimary = ({
   target,
   rel,
   children,
+  type,
   ...props
 }: ButtonPrimaryProps) => {
   if (isLink) {
@@ -36,6 +38,7 @@ export const ButtonPrimary = ({
 
   return (
     <button
+      type={type}
       className={`w-full uppercase border-2 border-primary-300 bg-primary-300 text-neutral-full font-medium text-base py-2 rounded-full transition-all hover:bg-transparent hover:border-primary-300 hover:text-primary-300 ${className}`}
       {...props}
     >
