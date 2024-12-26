@@ -12,7 +12,9 @@ import { FaBath, FaBed, FaCar } from "react-icons/fa";
 
 import { ItemDescription } from "./components/ItemDescription";
 import { Check } from "./components/ItemCheck";
+
 import { CardDescription } from "@/app/components/CardDescription";
+import { WhatsAppButton } from "@/app/components/Whatsapp";
 
 interface BuildingPageProps {
   params: {
@@ -140,6 +142,8 @@ export default function Building({ params }: BuildingPageProps) {
       </Container>
 
       <Footer />
+
+      <WhatsAppButton phoneNumber={5511999999999} />
     </>
   );
 }
