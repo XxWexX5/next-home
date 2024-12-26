@@ -8,8 +8,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Image from "next/image";
+import { useBuildings } from "@/app/context/BuildingsContext";
 
 export const Carrousel = () => {
+  const { building } = useBuildings();
+
   const settings = {
     dots: false,
     infinite: true,
@@ -43,27 +46,7 @@ export const Carrousel = () => {
       <Slider {...settings} className="h-full">
         <div className="w-full h-full">
           <Image
-            src="/images/image1.jpg"
-            alt="Image 1"
-            width={400}
-            height={200}
-            layout="responsive"
-            objectFit="cover"
-          />
-        </div>
-        <div className="w-full">
-          <Image
-            src="/images/image2.jpg"
-            alt="Image 2"
-            width={400}
-            height={200}
-            layout="responsive"
-            objectFit="cover"
-          />
-        </div>
-        <div className="w-full">
-          <Image
-            src="/images/image3.jpg"
+            src={building.ThumbnailURL}
             alt="Image 3"
             width={400}
             height={200}
@@ -71,9 +54,21 @@ export const Carrousel = () => {
             objectFit="cover"
           />
         </div>
-        <div className="w-full">
+
+        <div className="w-full h-full">
           <Image
-            src="/images/image1.jpg"
+            src={building.ThumbnailURL}
+            alt="Image 3"
+            width={400}
+            height={200}
+            layout="responsive"
+            objectFit="cover"
+          />
+        </div>
+
+        <div className="w-full h-full">
+          <Image
+            src={building.ThumbnailURL}
             alt="Image 3"
             width={400}
             height={200}

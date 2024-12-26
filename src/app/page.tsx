@@ -1,3 +1,5 @@
+"use client";
+
 import { Header } from "./components/Header";
 import { Result } from "./components/Result";
 import { ButtonPrimary } from "./components/Button/components/ButtonPrimary";
@@ -8,7 +10,11 @@ import { Card } from "./components/Card";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { WhatsAppButton } from "./components/Whatsapp";
 
+import { useBuildings } from "./context/BuildingsContext";
+
 export default function Home() {
+  const { buildings } = useBuildings();
+
   return (
     <>
       <Header />
@@ -40,41 +46,21 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap gap-6 gap-y-10 px-8 justify-center items-center md:justify-start">
-            <Card
-              href="/building/123"
-              image={{ src: "/images/house.jpg", alt: "House", className: "" }}
-              title="House for rent in Maringá, Jardim Iguaçu, with 3 bedrooms, with 131.52 m²"
-              description="May 10th Street"
-              price={1100}
-              favorited={true}
-            />
-
-            <Card
-              href="/building/456"
-              image={{ src: "/images/house.jpg", alt: "House", className: "" }}
-              title="House for rent in Maringá, Jardim Iguaçu, with 3 bedrooms, with 131.52 m²"
-              description="May 10th Street"
-              price={2000}
-              favorited={true}
-            />
-
-            <Card
-              href="/building/789"
-              image={{ src: "/images/house.jpg", alt: "House", className: "" }}
-              title="House for rent in Maringá, Jardim Iguaçu, with 3 bedrooms, with 131.52 m²"
-              description="May 10th Street"
-              price={2500}
-              favorited={false}
-            />
-
-            <Card
-              href="/building/321"
-              image={{ src: "/images/house.jpg", alt: "House", className: "" }}
-              title="House for rent in Maringá, Jardim Iguaçu, with 3 bedrooms, with 131.52 m²"
-              description="May 10th Street"
-              price={2500}
-              favorited={false}
-            />
+            {buildings.map((building) => (
+              <Card
+                key={building.Id}
+                href={`/building/${building.Id}`}
+                image={{
+                  src: building.PictureURL,
+                  alt: "Image",
+                  className: "",
+                }}
+                title={building.Title}
+                description={building.Description}
+                price={building.Sale_Price}
+                favorited={false}
+              />
+            ))}
           </div>
         </div>
 

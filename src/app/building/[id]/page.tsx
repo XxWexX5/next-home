@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/app/components/Button";
 import { Container } from "@/app/components/Container";
 import { Header } from "@/app/components/Header";
@@ -15,6 +17,10 @@ import { Check } from "./components/ItemCheck";
 
 import { CardDescription } from "@/app/components/CardDescription";
 import { WhatsAppButton } from "@/app/components/Whatsapp";
+import { useBuildings } from "@/app/context/BuildingsContext";
+import { useEffect } from "react";
+
+import { format } from "date-fns";
 
 interface BuildingPageProps {
   params: {
@@ -23,12 +29,16 @@ interface BuildingPageProps {
 }
 
 export default function Building({ params }: BuildingPageProps) {
+  const { handleBuilding, building } = useBuildings();
+
   const { id } = params;
 
   const latitude = -23.561684;
   const longitude = -46.655981;
 
-  console.log(id);
+  useEffect(() => {
+    handleBuilding(parseInt(id));
+  }, []);
 
   const address =
     "Rua Sal da Terra, Conjunto Residencial José Bonifácio, São Paulo, São Paulo- CEP 08257140";
@@ -88,36 +98,45 @@ export default function Building({ params }: BuildingPageProps) {
             <div className="flex justify-between gap-1 lg:justify-start">
               <ItemDescription
                 title="Total"
-                description="42.22 ft²"
+                description={`${building.Sqft} ft²`}
                 image={<BiSquareRounded className="fill-neutral-200" />}
               />
 
               <ItemDescription
                 title="Bed"
-                description="2"
+                description={building.Bedrooms || 0}
                 image={<FaBed className="fill-neutral-200" />}
               />
 
               <ItemDescription
                 title="Bath"
-                description="1"
+                description={building?.Bathrooms || 0}
                 image={<FaBath className="fill-neutral-200" />}
               />
 
               <ItemDescription
                 title="Parking"
-                description="1"
+                description={building?.Parking || 0}
                 image={<FaCar className="fill-neutral-200" />}
               />
             </div>
           </div>
 
-          <div className="space-y-2 lg:space-y-2">
+          <div className="space-y-2 w-full max-w-2xl lg:space-y-2">
             <h2 className="text-neutral-200 font-bold text-lg">
               About the Property
             </h2>
 
+            <p className="text-neutral-200">
+              {format(
+                new Date(building?.YearBuilt || "2023-02-18"),
+                "MMM dd, yyyy"
+              )}
+            </p>
+
             <p className="text-neutral-200">Schedule a visit with us!</p>
+
+            <p className="text-neutral-200">{building?.Description}</p>
           </div>
 
           <div className="space-y-4">

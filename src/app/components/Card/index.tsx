@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { Favorite } from "../Favorite";
 import Link from "next/link";
+import { formatCurrency } from "@/app/utils/formatCurrency";
 
 interface CardProps {
   href: string;
@@ -24,15 +25,6 @@ export const Card = ({
   price,
   favorited,
 }: CardProps) => {
-  function formatCurrency(value: string) {
-    const number = parseFloat(value);
-    if (isNaN(number)) return "";
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(number);
-  }
-
   return (
     <Link
       href={href}
@@ -52,9 +44,13 @@ export const Card = ({
       </header>
 
       <section className="p-6 space-y-6">
-        <p className="text-neutral-400">{title}</p>
+        <p className="text-neutral-400" title={title}>
+          {title}
+        </p>
 
-        <p className="text-neutral-200">{description}</p>
+        <p className="text-neutral-200 truncate" title={description}>
+          {description}
+        </p>
       </section>
 
       <footer className="flex justify-between px-6 pb-6">

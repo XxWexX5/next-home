@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface ItemDescriptionProps {
   title: string;
-  description: string;
+  description: string | number;
   image: ReactNode;
 }
 

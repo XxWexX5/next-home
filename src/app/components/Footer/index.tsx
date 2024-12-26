@@ -18,32 +18,32 @@ export const Footer = () => {
           <div className="space-y-6">
             <p className="text-neutral-200">
               <strong>
-                Real Estate Option | Sales Center | CRECI 4208J - Matrix
+                Real Estate Option | Sales Center | CRECI 5623X - Matrix
               </strong>
               <br />
-              SALES - Central: (44) 3033-1300 <br />
-              Avenida Doutor Luiz Teixeira Mendes, <br />
-              1356 - Zone 05 - Maringá/PR
+              SALES - Central: (45) 2156-7890 <br />
+              Avenida Brasil, <br />
+              1420 - Zone 07 - Cascavel/PR
             </p>
 
             <p className="text-neutral-200">
               <strong>
-                Real Estate Option | Sales Center | CRECI 4208J - Matrix
+                Real Estate Option | Sales Center | CRECI 7524Y - Matrix
               </strong>
               <br />
-              SALES - Central: (44) 3033-1300 <br />
-              Avenida Doutor Luiz Teixeira Mendes, <br />
-              1356 - Zone 05 - Maringá/PR
+              SALES - Central: (41) 9876-5432 <br />
+              Rua das Palmeiras, <br />
+              2567 - Zone 03 - Curitiba/PR
             </p>
 
             <p className="text-neutral-200">
               <strong>
-                Real Estate Option | Sales Center | CRECI 4208J - Matrix
+                Real Estate Option | Sales Center | CRECI 1982Z - Matrix
               </strong>
               <br />
-              SALES - Central: (44) 3033-1300 <br />
-              Avenida Doutor Luiz Teixeira Mendes, <br />
-              1356 - Zone 05 - Maringá/PR
+              SALES - Central: (47) 3241-6789 <br />
+              Rua Rio Branco, <br />
+              982 - Zone 02 - Joinville/SC
             </p>
           </div>
         </div>

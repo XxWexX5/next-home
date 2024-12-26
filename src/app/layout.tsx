@@ -1,5 +1,8 @@
+"use client";
+
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import { BuildingsProvider } from "./context/BuildingsContext";
 
 const roboto = Roboto({
   weight: ["400", "500", "700"],
@@ -13,7 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} antialiased`}>{children}</body>
+      <body className={`${roboto.className} antialiased`}>
+        {" "}
+        <BuildingsProvider>{children} </BuildingsProvider>
+      </body>
     </html>
   );
 }

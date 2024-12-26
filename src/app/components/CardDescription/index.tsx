@@ -11,7 +11,12 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { MdClose } from "react-icons/md";
 import { Select } from "../Select";
 
+import { useBuildings } from "@/app/context/BuildingsContext";
+import { formatCurrency } from "@/app/utils/formatCurrency";
+
 export const CardDescription = () => {
+  const { building } = useBuildings();
+
   const options = [
     { value: "location", label: "Location" },
     { value: "buy", label: "Buy" },
@@ -34,13 +39,10 @@ export const CardDescription = () => {
 
         <div className="space-y-6">
           <h2 className="text-neutral-200 font-medium text-lg leading-6">
-            House for rent in Maringá, Jardim Iguaçu, with 3 bedrooms, with
-            131.52 m²
+            {`${building.Title} - ${building.YearBuilt}`}
           </h2>
 
-          <p className="text-neutral-300">
-            Residencial Ito II, Street 10 de Maio, 291.
-          </p>
+          <p className="text-neutral-300 truncate">{building.Description}</p>
         </div>
 
         <hr className="my-10" />
@@ -54,9 +56,14 @@ export const CardDescription = () => {
 
         <div className="space-y-0 text-right">
           <h3 className=" text-neutral-200 text-sm">
-            <strong className="text-lg">R$ 1.000</strong> / month
+            <strong className="text-lg">
+              {formatCurrency(building?.Sale_Price?.toString())}
+            </strong>{" "}
+            / month
           </h3>
-          <p className="text-neutral-300 text-sm">R$ 800 / month</p>
+          <p className="text-neutral-300 text-sm">
+            {formatCurrency((building?.Sale_Price / 100).toString())} / month
+          </p>
         </div>
       </main>
 
