@@ -18,9 +18,10 @@ import { Check } from "./components/ItemCheck";
 import { CardDescription } from "@/app/components/CardDescription";
 import { WhatsAppButton } from "@/app/components/Whatsapp";
 import { useBuildings } from "@/app/context/BuildingsContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { format } from "date-fns";
+import axios from "axios";
 
 interface BuildingPageProps {
   params: {
@@ -30,24 +31,48 @@ interface BuildingPageProps {
 
 export default function Building({ params }: BuildingPageProps) {
   const { handleBuilding, building } = useBuildings();
+  const [coordinates, setCoordinates] = useState({ lat: Number, lng: Number });
 
   const { id } = params;
 
-  const latitude = -23.561684;
-  const longitude = -46.655981;
-
   useEffect(() => {
     handleBuilding(parseInt(id));
-  }, []);
+    handleGetCoordinates();
+  }, [building]);
 
-  const address =
-    "Rua Sal da Terra, Conjunto Residencial José Bonifácio, São Paulo, São Paulo- CEP 08257140";
+  const handleGetCoordinates = async () => {
+    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+    const baseUrl = "https://maps.googleapis.com/maps/api/geocode/json";
+
+    console.log();
+    console.log(building.Location);
+
+    try {
+      const response = await axios.get(
+        `${baseUrl}?address=${encodeURIComponent(
+          building.Location
+        )}&key=${apiKey}`
+      );
+      const data = response.data;
+
+      if (data.status === "OK") {
+        const location = data.results[0].geometry.location;
+        setCoordinates(location);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const address = building.Location;
 
   const encodedAddress = encodeURIComponent(address);
 
   const googleMapsUrl = `https://www.google.com/maps?q=${encodedAddress}`;
 
-  const streetViewUrl = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${latitude},${longitude}`;
+  const streetViewUrl = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${
+    coordinates?.lat || 0
+  },${coordinates?.lng || 0}`;
 
   return (
     <>
