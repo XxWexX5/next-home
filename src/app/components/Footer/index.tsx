@@ -18,7 +18,7 @@ export const Footer = () => {
           <div className="space-y-6">
             <p className="text-neutral-200">
               <strong>
-                Real Estate Option | Sales Center | CRECI 5623X - Matrix
+                Real Estate Option | Sales Center | CRECI 5624X - Matrix
               </strong>
               <br />
               SALES - Central: (45) 2156-7890 <br />
