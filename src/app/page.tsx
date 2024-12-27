@@ -164,7 +164,7 @@ export default function Home() {
                         </h5>
 
                         <RadioGroup.Root
-                          className="flex gap-6"
+                          className="flex overflow-x-auto gap-6"
                           defaultValue="disabled"
                           aria-label="View density"
                           value={numberBedrooms.toString()}
@@ -274,7 +274,7 @@ export default function Home() {
                         </h5>
 
                         <RadioGroup.Root
-                          className="flex gap-6"
+                          className="flex overflow-x-auto gap-6"
                           defaultValue="disabled"
                           aria-label="View density"
                           onValueChange={(value) => setNumberBathrooms(value)}
@@ -384,7 +384,7 @@ export default function Home() {
                         </h5>
 
                         <RadioGroup.Root
-                          className="flex gap-6"
+                          className="flex overflow-x-auto gap-6"
                           defaultValue="disabled"
                           aria-label="View density"
                           onValueChange={(value) => setNumberParking(value)}
@@ -493,7 +493,7 @@ export default function Home() {
                           Price
                         </h5>
 
-                        <div className="flex w-full gap-6">
+                        <div className="flex overflow-x-auto w-full gap-6">
                           <div className="flex-1 border border-neutral-600 inline-flex items-baseline gap-2 rounded-full px-3 py-[.55rem]">
                             <label
                               className="text-sm text-neutral-500"

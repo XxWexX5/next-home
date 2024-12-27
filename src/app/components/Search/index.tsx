@@ -48,7 +48,7 @@ export const Search = () => {
   ];
 
   return (
-    <div className="flex gap-3">
+    <div className="flex flex-col gap-3 items-center lg:flex-row ">
       <div className="w-full inline-flex items-center border border-neutral-700 bg-neutral-full px-4 pr-8 rounded-full h-12">
         <Select
           options={options}
