@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Button } from "@/app/components/Button";
@@ -23,13 +24,7 @@ import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import axios from "axios";
 
-interface BuildingPageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default function Building({ params }: BuildingPageProps) {
+export default function Building({ params }: any) {
   const { handleBuilding, building } = useBuildings();
   const [coordinates, setCoordinates] = useState({ lat: Number, lng: Number });
 

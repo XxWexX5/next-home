@@ -8,6 +8,7 @@ interface ButtonOutlineProps {
   target?: string;
   rel?: string;
   children: ReactNode;
+  onClick?: () => void;
 }
 
 export const ButtonOutline = ({
@@ -17,6 +18,7 @@ export const ButtonOutline = ({
   target,
   rel,
   children,
+  onClick,
   ...props
 }: ButtonOutlineProps) => {
   if (isLink) {
@@ -36,6 +38,7 @@ export const ButtonOutline = ({
   return (
     <button
       className={`w-full uppercase border-2 border-primary-300 text-primary-300 text-lg font-medium py-2 rounded-full transition-all hover:bg-primary-300 hover:text-neutral-full ${className}`}
+      onClick={onClick}
       {...props}
     >
       {children}

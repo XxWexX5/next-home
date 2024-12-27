@@ -8,7 +8,7 @@ interface ButtonPrimaryProps {
   className?: string;
   target?: string;
   rel?: string;
-  type?: string;
+  type?: "button" | "reset" | "submit" | undefined;
   onClick?: () => void;
   children: ReactNode;
 }

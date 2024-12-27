@@ -14,7 +14,7 @@ interface SelectProps {
   optionDisabled: string;
   className?: string;
   id?: string;
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   value?: string;
 }
 

@@ -54,7 +54,9 @@ export const Search = () => {
           options={options}
           optionDisabled="Select a place"
           value={place}
-          onChange={(e) => setPlace(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+            setPlace(e.target.value)
+          }
         />
 
         <div className="h-[86%] w-px bg-neutral-700 ml-3 mr-5"></div>

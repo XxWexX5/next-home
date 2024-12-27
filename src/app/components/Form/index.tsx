@@ -2,7 +2,6 @@
 
 import { toast } from "react-toastify";
 import { Button } from "../Button";
-import { Select } from "../Select";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 
