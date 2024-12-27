@@ -23,6 +23,8 @@ interface BuildingsContextProps {
   setBuildings: (building: Building[]) => void;
   handleBuilding: (id: number) => void;
   building: Building;
+  search: string;
+  setSearch: (search: string) => void;
 }
 
 const BuildingsContext = createContext<BuildingsContextProps | undefined>(
@@ -34,6 +36,7 @@ export const BuildingsProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [buildings, setBuildings] = useState<Building[]>(data);
   const [building, setBuilding] = useState<Building>({} as Building);
+  const [search, setSearch] = useState("");
 
   function handleBuilding(id: number) {
     const build = buildings.filter((build) => build.Id === id)[0];
@@ -43,7 +46,14 @@ export const BuildingsProvider: React.FC<{ children: ReactNode }> = ({
 
   return (
     <BuildingsContext.Provider
-      value={{ buildings, setBuildings, handleBuilding, building }}
+      value={{
+        buildings,
+        setBuildings,
+        handleBuilding,
+        building,
+        search,
+        setSearch,
+      }}
     >
       {children}
     </BuildingsContext.Provider>

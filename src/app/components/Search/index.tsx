@@ -8,8 +8,8 @@ import { useEffect, useState } from "react";
 import { data } from "@/app/data/buildings";
 
 export const Search = () => {
-  const { setBuildings } = useBuildings();
-  const [search, setSearch] = useState("");
+  const { setBuildings, search, setSearch } = useBuildings();
+
   const [place, setPlace] = useState("");
 
   useEffect(() => {

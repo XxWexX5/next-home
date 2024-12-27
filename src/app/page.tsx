@@ -11,7 +11,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { WhatsAppButton } from "./components/Whatsapp";
 
 import { useBuildings } from "./context/BuildingsContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { MdClose } from "react-icons/md";
@@ -19,6 +19,7 @@ import { MdClose } from "react-icons/md";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { data } from "./data/buildings";
 
 export default function Home() {
   const { buildings, setBuildings } = useBuildings();
@@ -29,7 +30,85 @@ export default function Home() {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentItems = buildings.slice(startIndex, startIndex + itemsPerPage);
 
+  const [numberBedrooms, setNumberBedrooms] = useState("disabled");
+  const [numberBathrooms, setNumberBathrooms] = useState("disabled");
+  const [numberParking, setNumberParking] = useState("disabled");
+  const [valueFromPrice, setValueFromPrice] = useState("");
+  const [valueUntilPrice, setValueUntilPrice] = useState("");
+
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  function handleSort(type: "greater" | "lowest") {
+    if (type === "lowest") {
+      const buildingSorted = buildings.sort(
+        (a, b) => a.Sale_Price - b.Sale_Price
+      );
+
+      return setBuildings([...buildingSorted]);
+    }
+
+    const buildingSorted = buildings.sort(
+      (a, b) => b.Sale_Price - a.Sale_Price
+    );
+
+    return setBuildings([...buildingSorted]);
+  }
+
+  useEffect(() => {
+    if (numberBedrooms === "disabled") {
+      return setBuildings([...data]);
+    }
+
+    const dataBedrooms = data.filter(
+      (building) => building.Bedrooms.toString() === numberBedrooms
+    );
+
+    return setBuildings([...dataBedrooms]);
+  }, [numberBedrooms]);
+
+  useEffect(() => {
+    if (numberBathrooms === "disabled") {
+      return setBuildings([...data]);
+    }
+
+    const dataBedrooms = data.filter(
+      (building) => building.Bathrooms.toString() === numberBathrooms
+    );
+
+    return setBuildings([...dataBedrooms]);
+  }, [numberBathrooms]);
+
+  useEffect(() => {
+    if (numberParking === "disabled") {
+      return setBuildings([...data]);
+    }
+
+    const dataBedrooms = data.filter(
+      (building) => building.Parking.toString() === numberParking
+    );
+
+    return setBuildings([...dataBedrooms]);
+  }, [numberParking]);
+
+  useEffect(() => {
+    if (
+      !valueFromPrice ||
+      !valueUntilPrice ||
+      parseInt(valueUntilPrice) === 0
+    ) {
+      return setBuildings([...data]);
+    }
+
+    if (parseInt(valueFromPrice) >= 0 && parseInt(valueUntilPrice) > 0) {
+      const dataPrices = data.filter(
+        (building) =>
+          building.Sale_Price >= parseInt(valueFromPrice) &&
+          building.Sale_Price <= parseInt(valueUntilPrice)
+      );
+
+      return setBuildings([...dataPrices]);
+    }
+  }, [valueFromPrice, valueUntilPrice]);
 
   return (
     <>
@@ -51,12 +130,18 @@ export default function Home() {
                     className="min-w-[8rem] rounded-md bg-white p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade"
                     sideOffset={5}
                   >
-                    <DropdownMenu.Item className="gap-2 w-full m-0 p-0 text-center group relative flex h-[25px] select-none items-center justify-center rounded-[3px]  text-[13px] leading-none text-violet11 outline-none text-neutral-200 cursor-pointer transition-opacity hover:opacity-50">
+                    <DropdownMenu.Item
+                      onClick={() => handleSort("greater")}
+                      className="gap-2 w-full m-0 p-0 text-center group relative flex h-[25px] select-none items-center justify-center rounded-[3px]  text-[13px] leading-none text-violet11 outline-none text-neutral-200 cursor-pointer transition-opacity hover:opacity-50"
+                    >
                       <FaChevronUp className="text-neutral-400" />
                       Greater value
                     </DropdownMenu.Item>
 
-                    <DropdownMenu.Item className="gap-2 w-full m-0 p-0 text-center group relative flex h-[25px] select-none items-center justify-center rounded-[3px]  text-[13px] leading-none text-violet11 outline-none text-neutral-200 cursor-pointer transition-opacity hover:opacity-50">
+                    <DropdownMenu.Item
+                      onClick={() => handleSort("lowest")}
+                      className="gap-2 w-full m-0 p-0 text-center group relative flex h-[25px] select-none items-center justify-center rounded-[3px]  text-[13px] leading-none text-violet11 outline-none text-neutral-200 cursor-pointer transition-opacity hover:opacity-50"
+                    >
                       <FaChevronDown className="text-neutral-400" /> Lowest
                       value
                     </DropdownMenu.Item>
@@ -82,6 +167,8 @@ export default function Home() {
                           className="flex gap-6"
                           defaultValue="disabled"
                           aria-label="View density"
+                          value={numberBedrooms.toString()}
+                          onValueChange={(value) => setNumberBedrooms(value)}
                         >
                           <div className="flex flex-1 items-center">
                             <RadioGroup.Item
@@ -190,6 +277,8 @@ export default function Home() {
                           className="flex gap-6"
                           defaultValue="disabled"
                           aria-label="View density"
+                          onValueChange={(value) => setNumberBathrooms(value)}
+                          value={numberBathrooms}
                         >
                           <div className="flex flex-1 items-center">
                             <RadioGroup.Item
@@ -298,6 +387,8 @@ export default function Home() {
                           className="flex gap-6"
                           defaultValue="disabled"
                           aria-label="View density"
+                          onValueChange={(value) => setNumberParking(value)}
+                          value={numberParking}
                         >
                           <div className="flex-1 flex items-center">
                             <RadioGroup.Item
@@ -422,6 +513,10 @@ export default function Home() {
                               id="value-from"
                               type="number"
                               className="text-neutral-200"
+                              value={valueFromPrice}
+                              onChange={(e) =>
+                                setValueFromPrice(e.target.value)
+                              }
                             />
                           </div>
 
@@ -444,6 +539,10 @@ export default function Home() {
                               id="value-until"
                               type="number"
                               className="text-neutral-200"
+                              value={valueUntilPrice}
+                              onChange={(e) =>
+                                setValueUntilPrice(e.target.value)
+                              }
                             />
                           </div>
                         </div>

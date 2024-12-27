@@ -1,6 +1,5 @@
 import { Logo } from "../Logo";
 import { Search } from "../Search";
-import { Button } from "../Button";
 import { Container } from "../Container";
 import { Menu } from "../Menu";
 
