@@ -20,6 +20,14 @@ export const CardDescription = () => {
 
   const [isOpenDialog, setIsOpenDialog] = useState(false);
 
+  const phoneNumber = 5511999999999;
+
+  const message = "Hello! I'd like to know more about the house.";
+
+  const whatsAppURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    message
+  )}`;
+
   return (
     <div className="top-0 right-0 w-full bg-neutral-full max-w-[28rem] m-auto min-h-[28rem] z-10 py-8 px-6 rounded-lg shadow-md mb-12 lg:absolute lg:mb-0 lg:-mt-[3rem]">
       <header>
@@ -48,25 +56,24 @@ export const CardDescription = () => {
 
       <main className="flex justify-between items-end">
         <div className="space-y-0">
-          <h3 className="font-bold text-neutral-200">Rent</h3>
-          <p className="text-neutral-300">Condominium</p>
+          <h3 className="font-bold text-neutral-200">Price</h3>
         </div>
 
         <div className="space-y-0 text-right">
           <h3 className=" text-neutral-200 text-sm">
             <strong className="text-lg">
               {formatCurrency(building?.Sale_Price?.toString())}
-            </strong>{" "}
-            / month
+            </strong>
           </h3>
-          <p className="text-neutral-300 text-sm">
-            {formatCurrency((building?.Sale_Price / 100).toString())} / month
-          </p>
         </div>
       </main>
 
       <footer className="space-y-4 mt-10">
-        <Button.Primary className="flex items-center justify-center gap-2 relative">
+        <Button.Primary
+          href={whatsAppURL}
+          isLink={true}
+          className="flex items-center justify-center gap-2 relative"
+        >
           <GrCircleQuestion size={24} className="absolute left-[1.35rem]" />
           <p className="lowercase">I want to know more</p>
         </Button.Primary>

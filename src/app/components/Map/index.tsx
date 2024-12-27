@@ -12,14 +12,11 @@ type CoordinatesType = {
 export const GoogleMap = () => {
   const { buildings } = useBuildings();
 
-  const [addresses, setAddresses] = useState<string[]>([]);
   const [coordinatesList, setCoordinatesList] = useState<CoordinatesType[]>([]);
   const [mapCenter, setMapCenter] = useState<CoordinatesType | undefined>();
 
   const handleGeocode = async () => {
     const addresses = buildings.map((building) => building.Location);
-
-    setAddresses(addresses);
 
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
@@ -82,7 +79,7 @@ export const GoogleMap = () => {
         center={mapCenter || { lat: 48.8566, lng: 2.3522 }}
       >
         {coordinatesList.map((coords, index) => (
-          <Marker key={index} position={coords} label={addresses[index]} />
+          <Marker key={index} position={coords} />
         ))}
       </Map>
     </APIProvider>
