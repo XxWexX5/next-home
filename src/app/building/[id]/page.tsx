@@ -44,9 +44,6 @@ export default function Building({ params }: BuildingPageProps) {
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
     const baseUrl = "https://maps.googleapis.com/maps/api/geocode/json";
 
-    console.log();
-    console.log(building.Location);
-
     try {
       const response = await axios.get(
         `${baseUrl}?address=${encodeURIComponent(
