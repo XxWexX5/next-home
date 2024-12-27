@@ -2,6 +2,9 @@
 
 ![image-project](https://github.com/user-attachments/assets/2f2f2edb-c074-44c9-b3c1-557209b4846e)
 
+deploy: https://next-home-hx8mgeyn8-xxwexx5s-projects.vercel.app
+
+figma: https://www.figma.com/design/Lo6fO0rQGx0AhLnKE1XxO6/Frontend---Assessment---Next-Place?node-id=2-177&t=xGZtFexQzY33xxIs-1
 
 Next-Home is a web platform designed to help you find your next home easily and efficiently. With a clean interface and user-friendly features, the platform allows you to explore available listings, search based on your preferences, and connect with real estate agents.
 
